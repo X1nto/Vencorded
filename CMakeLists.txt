@@ -6,7 +6,6 @@ project ("Vencorded")
 
 add_executable (Vencorded "vencorded.cpp"  "ui/options.h" "ui/options.cpp" "ui/optionsmenu.h" "ui/optionsmenu.cpp" "installer/directories.h" "installer/directories.cpp"  "installer/installer.h" "installer/installer.cpp")
 
-set(CMAKE_FIND_DEBUG_MODE ON)
 if (WIN32)
 	find_path(PDC_INCLUDES curses.h REQUIRED)
 	find_library(PDC_LIBS pdcurses REQUIRED)
