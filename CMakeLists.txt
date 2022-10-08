@@ -1,4 +1,4 @@
-﻿cmake_minimum_required (VERSION 3.21)
+﻿cmake_minimum_required (VERSION 3.8)
 
 set(VCPKG_TARGET_TRIPLET "x64-windows-static")
 
