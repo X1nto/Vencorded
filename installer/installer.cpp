@@ -1,6 +1,7 @@
 #include "installer.h"
 #include <filesystem>
 #include <fstream>
+#include <format>
 
 namespace filesystem = std::filesystem;
 
