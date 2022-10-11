@@ -44,7 +44,11 @@ std::shared_ptr<vencorded::Option> vencorded::OptionsMenu::selection_prompt()
 			should_exit = true;
 			break;
 		case 10:
-			return options[current_i];
+			const option_t current = options[current_i];
+			if (current->handle_selection())
+			{
+				return options[current_i];
+			}
 		}
 		clear();
 	}
@@ -64,18 +68,7 @@ void vencorded::OptionsMenu::print_menu()
 		{
 			attron(COLOR_PAIR(1));
 		}
-
-		printw("[%i] %s", i + 1, option->display_name.c_str());
-
-		if (is_selected)
-		{
-			cast_to<ExtraInfoOption*>(option.get(), [](ExtraInfoOption* c) {
-				printw(" (%s)", c->display_extra.c_str());
-				});
-		}
-
-		printw("\n");
-
+		printw("[%i] %s\n", i + 1, option->get_display_name().c_str());
 		if (is_selected)
 		{
 			attroff(COLOR_PAIR(1));
