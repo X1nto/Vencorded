@@ -84,22 +84,20 @@ int main()
 		}
 		clear();
 
-		cast_to<vencorded::ExtraInfoOption*>(result.get(), [&](vencorded::ExtraInfoOption* c) {
-			printw("Installing...");
-			refresh();
-			std::string id = c->id;
-			bool installed = install(id, input);
-			clear();
-			if (installed)
-			{
-				printw("Successfully installed!");
-			}
-			else 
-			{
-				printw("Failed to install.");
-			}
-			refresh();
-			});
+		printw("Installing...");
+		refresh();
+		std::string id = result->id;
+		bool installed = install(id, input);
+		clear();
+		if (installed)
+		{
+			printw("Successfully installed!");
+		}
+		else 
+		{
+			printw("Failed to install.");
+		}
+		refresh();
 	}
 	else if (result->id == "uninstall")
 	{
@@ -114,22 +112,20 @@ int main()
 		OptionsMenu* choose_path_menu = new OptionsMenu("Please choose your Vencord installation:", choose_path_options);
 		option_t result = choose_path_menu->selection_prompt();
 		delete choose_path_menu;
-		cast_to<vencorded::ExtraInfoOption*>(result.get(), [&](vencorded::ExtraInfoOption* c) {
-			printw("Uninstalling...");
-			refresh();
-			std::string id = c->id;
-			bool uninstalled = uninstall(id);
-			clear();
-			if (uninstalled)
-			{
-				printw("Successfully uninstalled!");
-			}
-			else
-			{
-				printw("Failed to uninstall.");
-			}
-			refresh();
-			});
+		printw("Uninstalling...");
+		refresh();
+		std::string id = result->id;
+		bool uninstalled = uninstall(id);
+		clear();
+		if (uninstalled)
+		{
+			printw("Successfully uninstalled!");
+		}
+		else
+		{
+			printw("Failed to uninstall.");
+		}
+		refresh();
 	}
 
 	if (result->id != "exit")
