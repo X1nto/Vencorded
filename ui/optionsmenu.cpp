@@ -1,7 +1,6 @@
 #include "optionsmenu.h"
 #include "options.h"
 #include "curses.h"
-#include "../util/casts.h"
 
 vencorded::OptionsMenu::OptionsMenu(const std::string& title, const options_t& options) 
 	: title(title), options(options), options_s(options.size()), last_i(options_s - 1)

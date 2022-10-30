@@ -7,7 +7,6 @@
 #include "ui/optionsmenu.h"
 #include "installer/directories.h"
 #include "installer/installer.h"
-#include "util/casts.h"
 
 using vencorded::option_t;
 using vencorded::options_t;
