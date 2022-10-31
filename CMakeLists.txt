@@ -4,7 +4,20 @@ set(VCPKG_TARGET_TRIPLET "x64-windows-static")
 
 project ("Vencorded")
 
-add_executable (Vencorded "vencorded.cpp"  "ui/options.h" "ui/options.cpp" "ui/optionsmenu.h" "ui/optionsmenu.cpp" "installer/directories.h" "installer/directories.cpp"  "installer/installer.h" "installer/installer.cpp")
+add_executable (Vencorded 
+	"vencorded.cpp" 
+
+	"ui/options.h"
+	"ui/options.cpp" 
+	"ui/optionsmenu.h"
+	"ui/optionsmenu.cpp"
+
+	"installer/installer.h" 
+	"installer/installer.cpp"
+	"downloader/downloader.cpp"
+	"directories/discord.h"
+	"directories/discord.cpp"
+ "downloader/downloader.h" "directories/vencorded.h" "directories/vencorded.cpp")
 
 if (WIN32)
 	find_path(PDC_INCLUDES curses.h REQUIRED)
@@ -17,6 +30,9 @@ else()
 	find_package(Curses REQUIRED)
 	include_directories(${CURSES_INCLUDE_DIR})
 endif()
+
+find_package(unofficial-git2 CONFIG REQUIRED)
+target_link_libraries(Vencorded unofficial::git2::git2)
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET Vencorded PROPERTY CXX_STANDARD 20)

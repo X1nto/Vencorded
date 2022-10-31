@@ -1,5 +1,10 @@
+#pragma once
+
 #include <string>
 
-bool install(std::string& discord_path, std::string& vencord_path);
+namespace vencorded
+{
+bool install(std::string& discord_path);
 
 bool uninstall(std::string& discord_path);
+}
